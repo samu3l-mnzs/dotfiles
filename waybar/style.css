@@ -1,0 +1,112 @@
+/* ==========================================
+   Configurações Globais e Resets
+   ========================================== */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Ubuntu Nerd Font", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+/* Barra Principal */
+window#waybar {
+    background-color: rgba(15, 15, 15, 0.85); /* Preto translúcido */
+    color: #ffffff;
+}
+
+/* ==========================================
+   Estilização: Lado Esquerdo e Centro
+   ========================================== */
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #555555; /* Cor para workspaces inativas */
+}
+
+#workspaces button.active {
+    color: #a6e3a1; /* Verde para a workspace ativa */
+}
+
+#workspaces button.urgent {
+    color: #f38ba8; /* Vermelho para notificações urgentes */
+}
+
+#submap {
+    background-color: #f38ba8;
+    color: #11111b;
+    padding: 0 7px;
+}
+
+#window {
+    color: #d1d1d1; /* Cor do título central */
+}
+
+/* ==========================================
+   Estilização: Lado Direito (Módulos e Cores)
+   ========================================== */
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#battery,
+#battery.bat2,
+#clock,
+#tray {
+    padding: 0 6px;
+    margin: 0 2px;
+}
+
+#pulseaudio {
+    color: #89b4fa; /* Azul claro */
+}
+
+#cpu {
+    color: #74c7ec; /* Ciano */
+}
+
+#memory {
+    color: #f5c2e7; /* Rosa */
+}
+
+#temperature {
+    color: #fab387; /* Laranja */
+}
+
+#temperature.critical {
+    color: #f38ba8; /* Vermelho acima de 80°C */
+}
+
+#backlight {
+    color: #f9e2af; /* Amarelo */
+}
+
+#battery,
+#battery.bat2 {
+    color: #a6e3a1; /* Verde */
+}
+
+#battery.charging,
+#battery.bat2.charging {
+    color: #eeba3b; /* Amarelo ouro ao carregar */
+}
+
+#battery.critical:not(.charging),
+#battery.bat2.critical:not(.charging) {
+    color: #f38ba8; /* Alerta vermelho piscante */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+    color: #f38ba8; /* Rosa escuro/Vermelho no final */
+}
+
+#tray {
+    color: #ffffff;
+}
