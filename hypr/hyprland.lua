@@ -37,7 +37,7 @@ hl.monitor({
 
 -- Set programs that you use[cite: 1]
 local terminal    = "kitty"
-local fileManager = "nautilus"
+local fileManager = "thunar"
 local menu        = "wofi --show drun --allow-images"
 
 
@@ -54,8 +54,16 @@ hl.on("hyprland.start", function ()
   -- Waybar e applet de rede
   hl.exec_cmd("waybar &")
   hl.exec_cmd("nm-applet --indicator &")
-end)
 
+  -- ADAPTAÇÃO TEMA ESCURO & ÍCONES: Aplicar esquema escuro no GTK ao iniciar
+  hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'")
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'")
+
+    -- Inicialização do awww
+    hl.exec_cmd("awww-daemon &") -- ou o comando correspondente do awww
+    hl.exec_cmd("sleep 1 && awww img /home/samuel/Imagens/raios.png")
+end)
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -63,9 +71,22 @@ end)
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/[cite: 1]
 
+-------------------------------
+---- ENVIRONMENT VARIABLES ----
+-------------------------------
+
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
+-- Integração KDE no Hyprland
+hl.env("QT_QPA_PLATFORMTHEME", "kde")
+
+-- Estilo Breeze
+--hl.env("QT_STYLE_OVERRIDE", "Breeze")
+
+-- Tema escuro
+hl.env("QT_QUICK_CONTROLS_STYLE", "Imagine")
+hl.env("QT_QUICK_CONTROLS_MATERIAL_THEME", "Dark")
 
 -----------------------
 ----- PERMISSIONS -----
